@@ -40,4 +40,12 @@ total_words:
 	@wc -w pg*.txt | awk 'END {print $1}'
 
 
-.PHONY: default get_texts raven_line_count ravent_word_count raven_counts total_lines total_words
+setup_env:
+	python3 -m venv env
+	./env/bin/pip install --upgrade pip
+	./env/bin/pip install -r requirements.txt
+
+
+
+
+.PHONY: default get_texts raven_line_count ravent_word_count raven_counts total_lines total_words setup_env
