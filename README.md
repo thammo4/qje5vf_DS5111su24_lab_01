@@ -1,3 +1,5 @@
+[![Python package](https://github.com/thammo4/qje5vf_DS5111su24_lab_01/actions/workflows/validations.yml/badge.svg)](https://github.com/thammo4/qje5vf_DS5111su24_lab_01/actions/workflows/validations.yml)
+
 ## Text Processing Functions
 
 This project includes several text processing functions in `tokenize_text.py`:
