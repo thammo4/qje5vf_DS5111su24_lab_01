@@ -51,7 +51,7 @@ tests:
 
 cleanup_dir:
 	@echo "Cleaning up directory..."
-	@rm -v pg*.txt
+	@rm -f pg*.txt
 
 all: setup_env get_texts
 	@echo "---- Begin statistics about downloaded texts ----"
