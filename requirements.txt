@@ -1,6 +1,6 @@
 dill==0.3.7
 iniconfig==2.0.0
-isort==5.13.2
+isort==5.9.3
 mccabe==0.7.0
 packaging==24.1
 platformdirs==4.2.2
