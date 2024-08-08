@@ -24,9 +24,12 @@ jobs:
       - name: Fetch Data Texts
         run: |
           make get_texts
-      - name: Run tests on texts
+      - name: Run non-integration tests on texts
         run: |
           make tests
+      - name: Run integration tests
+        run: |
+          make integration_tests
       - name: Cleanup texts in dir
         run: |
           make cleanup_dir

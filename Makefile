@@ -46,8 +46,12 @@ setup_env:
 	./env/bin/pip install -r requirements.txt
 
 tests:
-	@echo "Running PyTest for all test cases in 'tests/' subdirectory.'"
-	@bash -c "source env/bin/activate && pytest -vvx tests/"
+	@echo "Running PyTest for non-integration test cases in 'tests/' subdirectory.'"
+	@bash -c "source env/bin/activate && pytest -vvx -m 'not integration' tests/"
+
+integration_tests:
+	@echo "Running PyTest for integration test cases in 'tests/' subdirectory.'"
+	@bash -c "source env/bin/activate && pytest -vvx -m integration tests/"
 
 cleanup_dir:
 	@echo "Cleaning up directory..."
