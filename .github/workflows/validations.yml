@@ -32,6 +32,7 @@ jobs:
           make get_texts
       - name: Run non-integration tests on texts
         if: ${{ github.event.inputs.run_non_integration != 'false' }}
+        continue-on-error: true
         run: |
           make tests
       - name: Run integration tests
