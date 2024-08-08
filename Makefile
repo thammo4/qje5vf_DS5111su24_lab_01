@@ -47,7 +47,7 @@ setup_env:
 
 tests:
 	@echo "Running PyTest for all test cases in 'tests/' subdirectory.'"
-	@bash -c "source env/bin/activate && pytest tests/"
+	@bash -c "source env/bin/activate && pytest -vvx tests/"
 
 cleanup_dir:
 	@echo "Cleaning up directory..."
