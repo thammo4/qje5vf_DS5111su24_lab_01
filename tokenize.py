@@ -1,5 +1,6 @@
 import string
 import os
+import glob
 
 def clean_text(input_text):
     """
@@ -126,15 +127,12 @@ if __name__ == "__main__":
     # print("Word counts:", word_count_dictionary)
 
     # Example file operations
-    filenames = [
-        'pg2147.txt', 'pg17192.txt', 'pg2148.txt', 'pg1063.txt',
-        'pg2149.txt', 'pg2150.txt', 'pg2151.txt', 'pg1064.txt',
-        'pg2152.txt', 'pg2154.txt'
-    ]
+    filenames = glob.glob('pg*.txt')
     total_lines = count_total_lines(filenames)
     print(f"Total lines across all files: {total_lines}")
     total_words = count_total_words(filenames)
     print(f"Total words across all files: {total_words}")
-    raven_occurrences = count_raven_occurrences('pg2148.txt')
+    # raven_occurrences = count_raven_occurrences('pg2148.txt')
+    raven_occurrences = count_raven_occurrences('pg17192.txt')
     print(f"'Raven' occurrences in the raven: {raven_occurrences}")
 
