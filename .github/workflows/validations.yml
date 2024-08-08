@@ -3,6 +3,12 @@ name: Python package
 on:
   push:
   workflow_dispatch:
+    inputs:
+      run_non_integration:
+        description: 'Run non-integration tests'
+        required: false
+        default: 'true'
+        type: boolean
 
 jobs:
   build:
@@ -25,6 +31,7 @@ jobs:
         run: |
           make get_texts
       - name: Run non-integration tests on texts
+        if: ${{ github.event.inputs.run_non_integration != 'false' }}
         run: |
           make tests
       - name: Run integration tests
