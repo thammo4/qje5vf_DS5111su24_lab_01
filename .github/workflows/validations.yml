@@ -1,0 +1,43 @@
+name: Python package
+
+on:
+  push:
+  workflow_dispatch:
+    inputs:
+      run_non_integration:
+        description: 'Run non-integration tests'
+        required: false
+        default: 'true'
+        type: boolean
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.7"]
+
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Configure Environment
+        run: |
+          make setup_env
+      - name: Fetch Data Texts
+        run: |
+          make get_texts
+      - name: Run non-integration tests on texts
+        if: ${{ github.event.inputs.run_non_integration != 'false' }}
+        continue-on-error: true
+        run: |
+          make tests
+      - name: Run integration tests
+        run: |
+          make integration_tests
+      - name: Cleanup texts in dir
+        run: |
+          make cleanup_dir
