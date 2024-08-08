@@ -45,7 +45,24 @@ setup_env:
 	./env/bin/pip install --upgrade pip
 	./env/bin/pip install -r requirements.txt
 
+tests:
+	@echo "Running PyTest for all test cases in 'tests/' subdirectory.'"
+	@bash -c "source env/bin/activate && pytest tests/"
+
+cleanup_dir:
+	@echo "Cleaning up directory..."
+	@rm -v pg*.txt
+
+all: setup_env get_texts
+	@echo "---- Begin statistics about downloaded texts ----"
+	@$(MAKE) --no-print-directory raven_line_count
+	@$(MAKE) --no-print-directory raven_word_count
+	@$(MAKE) --no-print-directory raven_counts
+	@$(MAKE) --no-print-directory total_lines
+	@$(MAKE) --no-print-directory total_words
+	@echo "-------------------------------------------------"
+	@$(MAKE) --no-print-directory tests
+	@$(MAKE) --no-print-directory cleanup_dir
 
 
-
-.PHONY: default get_texts raven_line_count ravent_word_count raven_counts total_lines total_words setup_env
+.PHONY: default get_texts raven_line_count cleanup_dir ravent_word_count raven_counts total_lines total_words setup_env tests all
