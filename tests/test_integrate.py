@@ -2,8 +2,8 @@
 slkdfjalskdfjaskfuahweriqukhjwek
 type two errorz
 """
-from test_base import *
-from tokenize_text import clean_text, tokenize
+from .test_base import *
+from qje5vf.tokenize_text import clean_text, tokenize
 
 @pytest.mark.integration
 def test_clean_and_tokenize_integration():

@@ -3,7 +3,7 @@
 """
 
 import string
-from test_base import *
+from .test_base import *
 
 @pytest.mark.xfail(reason="This test is deliberately set to fail")
 def test_fail_for_sure():

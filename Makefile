@@ -54,12 +54,13 @@ pylintrc:
 
 lint: pylintrc
 	@echo "Pylinting..."
-	@bash -c "source env/bin/activate && pylint tokenize_text.py tests/*.py" || true
+	# @bash -c "source env/bin/activate && pylint tokenize_text.py tests/*.py" || true
+	@bash -c "source env/bin/activate && pylint src/qje5vf/tokenize_text.py tests/*.py" || true
 
-
-tests: lint
+tests: get_texts lint	
 	@echo "Running PyTest for non-integration test cases in 'tests/' subdirectory.'"
 	@bash -c "source env/bin/activate && pytest -vvx -m 'not integration' tests/" || true
+	@$(MAKE) cleanup_dir
 
 integration_tests:
 	@echo "Running PyTest for integration test cases in 'tests/' subdirectory.'"
