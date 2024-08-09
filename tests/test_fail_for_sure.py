@@ -1,15 +1,15 @@
-# FILE: tests/test_integrate.py
-import sys
-import os
+"""
+    hiya
+"""
+
 import string
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+from test_base import *
 
-import pytest
-
-
-
+@pytest.mark.xfail(reason="This test is deliberately set to fail")
 def test_fail_for_sure():
-    expect = "Shall we not, like archers who have a mark to aim at, be more likely to hit upon what is right?";
-    actual = "If this test is so shamelessly contrieved, have I really tested anything at all?";
-    assert actual == expect, f"EXPECTED: '{expect}'. ACTUAL: '{actual}'";
-
+    """
+        sdfasdfqwef
+    """
+    expect = "Shall we not, like archers who have a mark to aim at, be more likely to hit upon what is right?"
+    actual = "If this test is so shamelessly contrieved, have I really tested anything at all?"
+    assert actual == expect, f"EXPECTED: '{expect}'. ACTUAL: '{actual}'"

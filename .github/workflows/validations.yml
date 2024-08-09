@@ -12,11 +12,10 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: ["3.7"]
+        python-version: ["3.10", "3.11"]
 
     steps:
       - uses: actions/checkout@v4
@@ -30,6 +29,9 @@ jobs:
       - name: Fetch Data Texts
         run: |
           make get_texts
+      - name: Run linter
+        run: |
+          make lint
       - name: Run non-integration tests on texts
         if: ${{ github.event.inputs.run_non_integration != 'false' }}
         continue-on-error: true

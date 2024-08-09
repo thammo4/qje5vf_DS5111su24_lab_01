@@ -45,7 +45,19 @@ setup_env:
 	./env/bin/pip install --upgrade pip
 	./env/bin/pip install -r requirements.txt
 
-tests:
+
+pylintrc:
+	@if [ ! -f pylintrc ]; then \
+		echo "Creating pylintrc file..."; \
+		pylint --generate-rcfile > pylintrc; \
+	fi;
+
+lint: pylintrc
+	@echo "Pylinting..."
+	@bash -c "source env/bin/activate && pylint tokenize_text.py tests/*.py" || true
+
+
+tests: lint
 	@echo "Running PyTest for non-integration test cases in 'tests/' subdirectory.'"
 	@bash -c "source env/bin/activate && pytest -vvx -m 'not integration' tests/" || true
 

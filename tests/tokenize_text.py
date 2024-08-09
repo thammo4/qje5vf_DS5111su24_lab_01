@@ -1,28 +1,29 @@
+"""
+    is this not a docstring?
+    when you call my name
+    it's like a little prayer
+"""
+
 import string
-import os
-import glob
-
-
-
-french_text = "_Mais le Corbeau, perché solitairement sur ce buste placide, parla ce seul mot comme si, son âme, en ce seul mot, il la répandait. Je ne proférai donc rien de plus: il n'agita donc pas de plume--jusqu'à ce que je fis à peine davantage que marmotter «D'autres amis déjà ont pris leur vol--demain il me laissera comme mes Espérances déjà ont pris leur vol.» Alors l'oiseau dit: «Jamais plus.»_"
+from test_base import FRENCH_TEXT
 
 def test_tokenize_french():
-    cleaned_text = clean_text(french_text)
+    """
+    blah blah blah
+    """
+    cleaned_text = clean_text(FRENCH_TEXT)
     tokenized_words = tokenize(cleaned_text)
     assert isinstance(tokenized_words, list), "Tokenization did not produce a list"
     assert len(tokenized_words) == 69, "Tokenization produced incorrect number of words"
     assert tokenized_words[0] == "mais", "First word in tokenization should be 'mais'"
 
-
-
-
 def clean_text(input_text):
     """
     Cleans the input text by converting it to lowercase and removing punctuation.
-    
+
     Args:
     input_text (str): The input text to be cleaned.
-    
+
     Returns:
     str: The cleaned text.
     """
@@ -34,10 +35,10 @@ def clean_text(input_text):
 def tokenize(input_text):
     """
     Tokenizes the input text into a list of words.
-    
+
     Args:
     input_text (str): The input text to be tokenized.
-    
+
     Returns:
     list: A list of words.
     """
@@ -48,10 +49,10 @@ def tokenize(input_text):
 def count_words(input_text):
     """
     Counts the occurrences of each word in the input text.
-    
+
     Args:
     input_text (str): The input text to be counted.
-    
+
     Returns:
     dict: A dictionary with words as keys and their counts as values.
     """
@@ -69,23 +70,23 @@ def count_words(input_text):
 def count_lines(filename):
     """
     Counts the number of lines in a file.
-    
+
     Args:
     filename (str): The path to the file.
-    
+
     Returns:
     int: The number of lines in the file.
     """
-    with open(filename, 'r') as file:
+    with open(filename, 'r', encoding='utf-8') as file:
         return sum(1 for line in file)
 
 def count_total_lines(filenames):
     """
     Counts the total number of lines in multiple files.
-    
+
     Args:
     filenames (list): A list of file paths.
-    
+
     Returns:
     int: The total number of lines across all files.
     """
@@ -97,16 +98,16 @@ def count_total_lines(filenames):
 def count_total_words(filenames):
     """
     Counts the total number of words in multiple files.
-    
+
     Args:
     filenames (list): A list of file paths.
-    
+
     Returns:
     int: The total number of words across all files.
     """
     total_words = 0
     for filename in filenames:
-        with open(filename, 'r') as file:
+        with open(filename, 'r', encoding='utf-8') as file:
             content = file.read()
             words = tokenize(clean_text(content))
             total_words += len(words)
@@ -115,38 +116,15 @@ def count_total_words(filenames):
 def count_raven_occurrences(filename):
     """
     Counts occurrences of the word 'raven' (case insensitive) in a file.
-    
+
     Args:
     filename (str): The path to the file.
-    
+
     Returns:
     dict: A dictionary with counts of 'raven' in lower and upper case.
     """
-    with open(filename, 'r') as file:
+    with open(filename, 'r', encoding='utf-8') as file:
         content = file.read()
         lc_count = content.lower().count('raven')
         uc_count = content.count('Raven')
         return {'lowercase': lc_count, 'uppercase': uc_count, 'total': lc_count + uc_count}
-
-# Example usage
-if __name__ == "__main__":
-    # sample_text = "The quick brown fox jumps over the lazy dog."
-    # cleaned_text = clean_text(sample_text)
-    # print("Cleaned text:", cleaned_text)
-    
-    # tokenized_words = tokenize(cleaned_text)
-    # print("Tokens:", tokenized_words)
-    
-    # word_count_dictionary = count_words(sample_text)
-    # print("Word counts:", word_count_dictionary)
-
-    # Example file operations
-    filenames = glob.glob('../pg*.txt')
-    total_lines = count_total_lines(filenames)
-    print(f"Total lines across all files: {total_lines}")
-    total_words = count_total_words(filenames)
-    print(f"Total words across all files: {total_words}")
-    # raven_occurrences = count_raven_occurrences('pg2148.txt')
-    raven_occurrences = count_raven_occurrences('../pg17192.txt')
-    print(f"'Raven' occurrences in the raven: {raven_occurrences}")
-

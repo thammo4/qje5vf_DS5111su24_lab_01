@@ -1,10 +1,6 @@
-import os, sys, platform
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')));
-
-import pytest
+from test_base import *
 from tokenize_text import tokenize, clean_text
-from tests.expected_failure_decorator import expected_to_fail
-
+import platform
 
 def test_platform_compatibility():
     """
@@ -28,8 +24,8 @@ def test_python_version():
 
     only Python3 is currently actively supported.
     """
-    assert ((sys.version_info.major == 3) and (sys.version_info.minor > 6)), f"Python 3.6+ only [yours: {sys.version}]"
-
+    assert ((sys.version_info.major == 3) and (sys.version_info.minor > 6)), \
+        f"Python 3.6+ only [yours: {sys.version}]"
 
 
 def test_pytest_version():
