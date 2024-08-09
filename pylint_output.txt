@@ -1,0 +1,55 @@
+Pylinting...
+# @bash -c "source env/bin/activate && pylint tokenize_text.py tests/*.py" || true
+************* Module tests.test_base
+tests/test_base.py:21:0: C0301: Line too long (407/100) (line-too-long)
+tests/test_base.py:19:0: C0413: Import "from .expected_failure_decorator import expected_to_fail" should be placed at the top of the module (wrong-import-position)
+tests/test_base.py:16:0: W0611: Unused import pytest (unused-import)
+tests/test_base.py:19:0: W0611: Unused expected_to_fail imported from expected_failure_decorator (unused-import)
+************* Module tests.test_bash_compare
+tests/test_bash_compare.py:32:0: C0301: Line too long (116/100) (line-too-long)
+tests/test_bash_compare.py:13:0: W0401: Wildcard import test_base (wildcard-import)
+tests/test_bash_compare.py:28:18: W1510: Using subprocess.run without explicitly set `check` is not recommended. (subprocess-run-check)
+tests/test_bash_compare.py:11:0: W0611: Unused import platform (unused-import)
+tests/test_bash_compare.py:12:0: W0611: Unused tokenize imported from qje5vf.tokenize_text (unused-import)
+tests/test_bash_compare.py:13:0: W0614: Unused import(s) os, sys, pytest, FRENCH_TEXT and expected_to_fail from wildcard import of test_base (unused-wildcard-import)
+************* Module tests.test_clean_text
+tests/test_clean_text.py:23:0: C0301: Line too long (395/100) (line-too-long)
+tests/test_clean_text.py:49:0: C0301: Line too long (123/100) (line-too-long)
+tests/test_clean_text.py:100:0: C0301: Line too long (121/100) (line-too-long)
+tests/test_clean_text.py:110:0: C0301: Line too long (136/100) (line-too-long)
+tests/test_clean_text.py:111:0: C0301: Line too long (136/100) (line-too-long)
+tests/test_clean_text.py:169:0: C0301: Line too long (136/100) (line-too-long)
+tests/test_clean_text.py:14:0: W0401: Wildcard import test_base (wildcard-import)
+tests/test_clean_text.py:14:0: W0614: Unused import(s) os and sys from wildcard import of test_base (unused-wildcard-import)
+************* Module tests.test_compatible
+tests/test_compatible.py:5:0: W0401: Wildcard import test_base (wildcard-import)
+tests/test_compatible.py:6:0: W0611: Unused tokenize imported from qje5vf.tokenize_text (unused-import)
+tests/test_compatible.py:6:0: W0611: Unused clean_text imported from qje5vf.tokenize_text (unused-import)
+tests/test_compatible.py:5:0: W0614: Unused import(s) os, FRENCH_TEXT and expected_to_fail from wildcard import of test_base (unused-wildcard-import)
+tests/test_compatible.py:6:0: C0411: first party import "from qje5vf.tokenize_text import tokenize, clean_text" should be placed before "from .test_base import *" (wrong-import-order)
+tests/test_compatible.py:7:0: C0411: standard import "import platform" should be placed before "from qje5vf.tokenize_text import tokenize, clean_text" (wrong-import-order)
+************* Module tests.test_count_words
+tests/test_count_words.py:40:0: C0301: Line too long (137/100) (line-too-long)
+tests/test_count_words.py:5:0: W0401: Wildcard import test_base (wildcard-import)
+tests/test_count_words.py:17:4: W0612: Unused variable 'tokenized_words' (unused-variable)
+tests/test_count_words.py:5:0: W0614: Unused import(s) os, sys and expected_to_fail from wildcard import of test_base (unused-wildcard-import)
+tests/test_count_words.py:6:0: C0411: first party import "from qje5vf.tokenize_text import tokenize, count_words, clean_text" should be placed before "from .test_base import *" (wrong-import-order)
+************* Module tests.test_fail_for_sure
+tests/test_fail_for_sure.py:13:0: C0301: Line too long (110/100) (line-too-long)
+tests/test_fail_for_sure.py:6:0: W0401: Wildcard import test_base (wildcard-import)
+tests/test_fail_for_sure.py:5:0: W0611: Unused import string (unused-import)
+tests/test_fail_for_sure.py:6:0: W0614: Unused import(s) os, sys, FRENCH_TEXT and expected_to_fail from wildcard import of test_base (unused-wildcard-import)
+************* Module tests.test_integrate
+tests/test_integrate.py:5:0: W0401: Wildcard import test_base (wildcard-import)
+tests/test_integrate.py:5:0: W0614: Unused import(s) os, sys, FRENCH_TEXT and expected_to_fail from wildcard import of test_base (unused-wildcard-import)
+tests/test_integrate.py:6:0: C0411: first party import "from qje5vf.tokenize_text import clean_text, tokenize" should be placed before "from .test_base import *" (wrong-import-order)
+************* Module tests.test_tokenize
+tests/test_tokenize.py:25:0: C0301: Line too long (131/100) (line-too-long)
+tests/test_tokenize.py:56:0: C0301: Line too long (132/100) (line-too-long)
+tests/test_tokenize.py:134:0: C0301: Line too long (136/100) (line-too-long)
+tests/test_tokenize.py:5:0: W0401: Wildcard import test_base (wildcard-import)
+tests/test_tokenize.py:5:0: W0614: Unused import(s) os, sys and FRENCH_TEXT from wildcard import of test_base (unused-wildcard-import)
+tests/test_tokenize.py:6:0: C0411: first party import "from qje5vf.tokenize_text import tokenize, clean_text" should be placed before "from .test_base import *" (wrong-import-order)
+
+------------------------------------------------------------------
+Your code has been rated at 8.31/10 (previous run: 8.31/10, +0.00)
