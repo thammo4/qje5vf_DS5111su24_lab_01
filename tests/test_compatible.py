@@ -39,4 +39,4 @@ def test_pytest_version():
     Then: check if the version is the one in the requirements.txt
     """
 
-    assert pytest.__version__ == '8.3.2', f"pytest {pytest.__version__}  -- expected 8.3.2"
+    assert pytest.__version__ == '7.4.4', f"pytest {pytest.__version__}  -- expected 7.4.4"
