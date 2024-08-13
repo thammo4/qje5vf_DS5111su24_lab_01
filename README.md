@@ -41,7 +41,7 @@ To automate the setup, text download, statistics generation, and testing process
 3. Generate statistics about the downloaded texts, including line and word counts for "The Raven" and total counts across all downloaded texts.
 4. Run the test suite to ensure all functionalities are working correctly.
 
-To use `make all`, simply run the following command in your terminal:
+To use `make all`, simply run the below command from the terminal. It will download the texts, apply the basic metric gathering, perform testing with pytest, produce output from pylint linting process, and then clean up the directory by removing the text files downloaded from project gutenberg.
 
 ```bash
 make all
