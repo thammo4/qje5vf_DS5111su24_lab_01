@@ -3,33 +3,33 @@ default:
 
 # Ten E.A. Poe works
 get_texts:
-	wget https://www.gutenberg.org/cache/epub/2147/pg2147.txt  # 1. The Fall of the House of Usher
-	wget https://www.gutenberg.org/cache/epub/17192/pg17192.txt # 2. The Raven
-	wget https://www.gutenberg.org/cache/epub/2148/pg2148.txt  # 3. The Raven VOL 2 and Other Works
-	wget https://www.gutenberg.org/cache/epub/1063/pg1063.txt  # 4. The Masque of the Red Death
-	wget https://www.gutenberg.org/cache/epub/2149/pg2149.txt  # The Pit and the Pendulum
-	wget https://www.gutenberg.org/cache/epub/2150/pg2150.txt  # 6. The Tell-Tale Heart
-	wget https://www.gutenberg.org/cache/epub/2151/pg2151.txt  # The Cask of Amontillado
-	wget https://www.gutenberg.org/cache/epub/1064/pg1064.txt  # 8. The Murders in the Rue Morgue
-	wget https://www.gutenberg.org/cache/epub/2152/pg2152.txt  # The Black Cat
-	wget https://www.gutenberg.org/cache/epub/2154/pg2154.txt  # 10. The Purloined Letter
+	wget https://www.gutenberg.org/cache/epub/10947/pg10947.txt  	# 1. Best AMR Shorties
+	wget https://www.gutenberg.org/cache/epub/17192/pg17192.txt 	# 2. The Raven 
+	wget https://www.gutenberg.org/cache/epub/932/pg932.txt  	# 3. Fall, House of Usher
+	wget https://www.gutenberg.org/cache/epub/1063/pg1063.txt  	# 4. Cask Amontillado
+	wget https://www.gutenberg.org/cache/epub/10031/pg10031.txt  	# 5. Poems
+	wget https://www.gutenberg.org/cache/epub/14082/pg14082.txt  	# 6. French raven
+	wget https://www.gutenberg.org/cache/epub/50852/pg50852.txt  	# 7. Bells, Poems
+	wget https://www.gutenberg.org/cache/epub/1064/pg1064.txt  	# 8. Masque Red Death
+	wget https://www.gutenberg.org/cache/epub/32037/pg32037.txt  	# 9. Eureka Poems 
+	wget https://www.gutenberg.org/cache/epub/51060/pg51060.txt  	# 10. Arthur G. Pym
 
 raven_line_count:
 	@echo "Raven line count:"
-	@wc -l pg2148.txt | cut -d' ' -f1
+	@wc -l pg17192.txt | cut -d' ' -f1
 
 raven_word_count:
 	@echo "Raven word count:"
-	@wc -w pg2148.txt | cut -d' ' -f1
+	@wc -w pg17192.txt | cut -d' ' -f1
 
 
 raven_counts:
 	@echo "Lines with 'raven' [lc]:"
-	@grep -c 'raven' pg2148.txt
+	@grep -c 'raven' pg17192.txt
 	@echo "Lines with 'raven' [uc]:"
-	@grep -c 'Raven' pg2148.txt
+	@grep -c 'Raven' pg17192.txt
 	@echo "Lines with 'raven' [lc,uc]"
-	@grep -ci 'raven' pg2148.txt
+	@grep -ci 'raven' pg17192.txt
 
 total_lines:
 	@echo "Total line count, all downloaded text files:"
@@ -45,7 +45,24 @@ setup_env:
 	./env/bin/pip install --upgrade pip
 	./env/bin/pip install -r requirements.txt
 
+tests:
+	@echo "Running PyTest for all test cases in 'tests/' subdirectory.'"
+	@bash -c "source env/bin/activate && pytest tests/"
+
+cleanup_dir:
+	@echo "Cleaning up directory..."
+	@rm -v pg*.txt
+
+all: setup_env get_texts
+	@echo "---- Begin statistics about downloaded texts ----"
+	@$(MAKE) --no-print-directory raven_line_count
+	@$(MAKE) --no-print-directory raven_word_count
+	@$(MAKE) --no-print-directory raven_counts
+	@$(MAKE) --no-print-directory total_lines
+	@$(MAKE) --no-print-directory total_words
+	@echo "-------------------------------------------------"
+	@$(MAKE) --no-print-directory tests
+	@$(MAKE) --no-print-directory cleanup_dir
 
 
-
-.PHONY: default get_texts raven_line_count ravent_word_count raven_counts total_lines total_words setup_env
+.PHONY: default get_texts raven_line_count cleanup_dir ravent_word_count raven_counts total_lines total_words setup_env tests all
