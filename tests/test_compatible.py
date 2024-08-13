@@ -1,5 +1,9 @@
-from test_base import *
-from tokenize_text import tokenize, clean_text
+"""
+    big fat fucking doc string sat on a wall
+"""
+
+from .test_base import *
+from qje5vf.tokenize_text import tokenize, clean_text
 import platform
 
 def test_platform_compatibility():

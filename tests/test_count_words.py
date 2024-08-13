@@ -2,8 +2,8 @@
 Words words words? words
 """
 
-from test_base import *
-from tokenize_text import tokenize, count_words, clean_text
+from .test_base import *
+from qje5vf.tokenize_text import tokenize, count_words, clean_text
 
 def test_count_words_french():
     """

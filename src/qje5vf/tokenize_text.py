@@ -1,21 +1,9 @@
 """
-    is this not a docstring?
-    when you call my name
-    it's like a little prayer
+To be perfectly frank, I think pylint might be my least favorite module.
+Everything in Python is smooth and easy, and then this stupid prick rolls along.
 """
 
 import string
-from test_base import FRENCH_TEXT
-
-def test_tokenize_french():
-    """
-    blah blah blah
-    """
-    cleaned_text = clean_text(FRENCH_TEXT)
-    tokenized_words = tokenize(cleaned_text)
-    assert isinstance(tokenized_words, list), "Tokenization did not produce a list"
-    assert len(tokenized_words) == 69, "Tokenization produced incorrect number of words"
-    assert tokenized_words[0] == "mais", "First word in tokenization should be 'mais'"
 
 def clean_text(input_text):
     """

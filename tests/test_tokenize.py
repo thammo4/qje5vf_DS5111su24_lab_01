@@ -2,8 +2,8 @@
 johnny b goode
 """
 
-from test_base import *
-from tokenize_text import tokenize, clean_text
+from .test_base import *
+from qje5vf.tokenize_text import tokenize, clean_text
 
 @pytest.mark.parametrize("input_text, expected_count", [
     ("The quick brown fox", 4),

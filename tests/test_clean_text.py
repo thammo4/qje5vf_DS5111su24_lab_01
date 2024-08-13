@@ -10,8 +10,8 @@ and conditions, ensuring the function's robustness and correctness.
 """
 
 import string
-from tokenize_text import clean_text
-from test_base import *
+from qje5vf.tokenize_text import clean_text
+from .test_base import *
 
 def test_clean_text_french():
     """
